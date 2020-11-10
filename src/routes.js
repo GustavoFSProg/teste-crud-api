@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { Router } from 'express'
 import usersController from './controllers/usersController'
 

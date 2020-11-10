@@ -1,5 +1,6 @@
 import md5 from 'md5'
 import usersModel from '../models/usersModel'
+import send from '../services/email-service'
 
 async function createUser(req, res) {
   try {
@@ -8,6 +9,7 @@ async function createUser(req, res) {
       email: req.body.email,
       password: md5(req.body.password, process.env.GLOBAL_SALT_KEY),
     })
+    send(req.body)
 
     return res.status(201).send({ message: 'User Created whit success!' })
   } catch (error) {
